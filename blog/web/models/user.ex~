@@ -1,0 +1,3 @@
+def Blog.User do
+	defstruct[:id,:username,:password]
+end
