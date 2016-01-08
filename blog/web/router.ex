@@ -1,6 +1,8 @@
 defmodule Blog.Router do
   use Blog.Web, :router
 
+
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -15,8 +17,12 @@ defmodule Blog.Router do
 
   scope "/", Blog do
     pipe_through :browser # Use the default browser stack
-
+		resources "/posts", PostController
+		
     get "/", PageController, :index
+		get "/posts", PostController, :index
+		get "/posts/:id", PostController, :show
+
   end
 
   # Other scopes may use custom stacks.
